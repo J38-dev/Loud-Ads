@@ -1408,3 +1408,25 @@ padding:20px;
 }
 
 }
+
+/* ===== MOBILE RESPONSIVENESS FIX ===== */
+
+@media (max-width:768px){
+
+/* reduce nav side padding so it fits */
+.nav{
+padding:20px 20px;
+}
+
+/* allow links to wrap instead of overflowing */
+.nav-links{
+flex-wrap:wrap;
+}
+
+/* reduce spacing between links */
+.nav-links a{
+margin-left:15px;
+font-size:14px;
+}
+
+}
