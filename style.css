@@ -1331,3 +1331,58 @@ ul {
     margin-left: 0;
   }
 }
+
+/* ================= GLOBAL FIX FOR NO HORIZONTAL SCROLL ================= */
+html, body {
+  overflow-x: hidden; /* prevent horizontal scrolling globally */
+}
+
+/* ================= NAVBAR RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .nav {
+    padding: 16px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* keeps logo left, links right */
+    align-items: center;
+    width: 100%; /* ensure navbar doesn't overflow */
+    box-sizing: border-box;
+  }
+
+  .logo {
+    height: 50px;
+    max-width: 50%; /* prevent logo from stretching too much */
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%; /* ensures links wrap within screen */
+    margin-top: 10px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    white-space: nowrap; /* prevents links from breaking weirdly */
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 10px;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+  }
+}
