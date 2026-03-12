@@ -1286,189 +1286,48 @@ ul {
 
 }
 
-@media (max-width:768px){
+/* ================= NAVBAR RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .nav {
+    padding: 16px 10px; /* smaller padding so it fits */
+    flex-wrap: wrap; /* allow wrapping if necessary */
+  }
 
-.nav{
-padding:20px 20px; /* reduce side padding so links don't overflow */
+  .logo {
+    height: 50px; /* smaller logo */
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap; /* wrap links */
+    justify-content: flex-end;
+    gap: 12px; /* consistent spacing between links */
+    width: 100%; /* full width so links wrap nicely */
+    margin-top: 10px; /* optional spacing below logo */
+  }
+
+  .nav-links a {
+    font-size: 14px; /* smaller font */
+    text-align: center; /* centers links on small devices */
+    padding: 5px 0;
+  }
 }
 
-.nav-links{
-display:flex;
-flex-wrap:wrap;
-justify-content:flex-end;
-}
+/* Extra small screens */
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column; /* stack logo and links vertically */
+    align-items: flex-start;
+    padding: 12px 10px;
+  }
 
-.nav-links a{
-margin-left:18px; /* slightly smaller spacing so links fit */
-font-size:16px;
-}
+  .nav-links {
+    justify-content: flex-start;
+    gap: 8px;
+  }
 
-.logo{
-height:50px; /* slightly smaller logo on phones */
-}
-
-}
-
-/* ===== GLOBAL IMAGE RESPONSIVE FIX ===== */
-
-img{
-max-width:100%;
-height:auto;
-}
-
-/* ===== PORTFOLIO MOBILE FIX ===== */
-
-@media (max-width:768px){
-
-.masonry{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media (max-width:480px){
-
-.masonry{
-grid-template-columns:1fr;
-}
-
-}
-/* ===== TRUST STATS MOBILE ===== */
-
-@media (max-width:768px){
-
-.stats{
-grid-template-columns:1fr;
-gap:30px;
-}
-
-}
-
-/* ===== BRAND LOGO MOBILE ===== */
-
-@media (max-width:768px){
-
-.brands-container{
-gap:30px;
-}
-
-.brand{
-flex:0 1 100px;
-}
-
-}
-
-/* ===== PROCESS MOBILE ===== */
-
-@media (max-width:768px){
-
-.step-card{
-font-size:1.1rem;
-padding:18px 25px 18px 60px;
-}
-
-}
-
-/* ===== SERVICES BIG MOBILE ===== */
-
-@media (max-width:768px){
-
-.service-item h3{
-font-size:2rem;
-}
-
-.service-item p{
-font-size:1rem;
-}
-
-.services-big{
-max-width:90%;
-}
-
-}
-
-/* ===== GLOBAL SECTION MOBILE ===== */
-
-@media (max-width:768px){
-
-section{
-padding:90px 6%;
-}
-
-}
-
-/* ===== REVIEWS MOBILE ===== */
-
-@media (max-width:768px){
-
-.review-card{
-min-width:260px;
-max-width:260px;
-padding:20px;
-}
-
-}
-
-/* ===== MOBILE RESPONSIVENESS FIX ===== */
-
-@media (max-width:768px){
-
-/* reduce nav side padding so it fits */
-.nav{
-padding:20px 20px;
-}
-
-/* allow links to wrap instead of overflowing */
-.nav-links{
-flex-wrap:wrap;
-}
-
-/* reduce spacing between links */
-.nav-links a{
-margin-left:15px;
-font-size:14px;
-}
-
-}
-
-/* ================= MOBILE RESPONSIVE FIX ================= */
-
-@media (max-width:768px){
-
-/* NAVBAR */
-.nav{
-padding:16px 20px; /* reduce side padding */
-}
-
-/* NAV LINKS */
-.nav-links a{
-margin-left:16px; 
-font-size:14px;
-}
-
-/* HERO SECTION */
-.hero{
-padding-left:6%;
-padding-right:6%;
-}
-
-/* HERO TEXT */
-.hero-title{
-font-size:2rem;
-}
-
-.hero-sub{
-font-size:1rem;
-max-width:100%;
-}
-
-/* SERVICE TEXT */
-.service-item h3{
-font-size:2rem;
-}
-
-.service-item p{
-font-size:1rem;
-}
-
+  .nav-links a {
+    font-size: 13px;
+    margin-left: 0;
+  }
 }
