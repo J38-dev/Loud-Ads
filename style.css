@@ -1283,4 +1283,128 @@ ul {
 @media (max-width: 480px) {
   #contact.contact h2 { font-size: 2rem; }
   #contact.contact p { font-size: 1.1rem; margin-bottom: 25px; }
+
+}
+
+@media (max-width:768px){
+
+.nav{
+padding:20px 20px; /* reduce side padding so links don't overflow */
+}
+
+.nav-links{
+display:flex;
+flex-wrap:wrap;
+justify-content:flex-end;
+}
+
+.nav-links a{
+margin-left:18px; /* slightly smaller spacing so links fit */
+font-size:16px;
+}
+
+.logo{
+height:50px; /* slightly smaller logo on phones */
+}
+
+}
+
+/* ===== GLOBAL IMAGE RESPONSIVE FIX ===== */
+
+img{
+max-width:100%;
+height:auto;
+}
+
+/* ===== PORTFOLIO MOBILE FIX ===== */
+
+@media (max-width:768px){
+
+.masonry{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:480px){
+
+.masonry{
+grid-template-columns:1fr;
+}
+
+}
+/* ===== TRUST STATS MOBILE ===== */
+
+@media (max-width:768px){
+
+.stats{
+grid-template-columns:1fr;
+gap:30px;
+}
+
+}
+
+/* ===== BRAND LOGO MOBILE ===== */
+
+@media (max-width:768px){
+
+.brands-container{
+gap:30px;
+}
+
+.brand{
+flex:0 1 100px;
+}
+
+}
+
+/* ===== PROCESS MOBILE ===== */
+
+@media (max-width:768px){
+
+.step-card{
+font-size:1.1rem;
+padding:18px 25px 18px 60px;
+}
+
+}
+
+/* ===== SERVICES BIG MOBILE ===== */
+
+@media (max-width:768px){
+
+.service-item h3{
+font-size:2rem;
+}
+
+.service-item p{
+font-size:1rem;
+}
+
+.services-big{
+max-width:90%;
+}
+
+}
+
+/* ===== GLOBAL SECTION MOBILE ===== */
+
+@media (max-width:768px){
+
+section{
+padding:90px 6%;
+}
+
+}
+
+/* ===== REVIEWS MOBILE ===== */
+
+@media (max-width:768px){
+
+.review-card{
+min-width:260px;
+max-width:260px;
+padding:20px;
+}
+
 }
