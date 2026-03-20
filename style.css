@@ -289,60 +289,7 @@ padding:140px 20px;
 .hero-title{font-size:10vw;}
 }
 
-/* =========================
-   WHATSAPP BUTTON
-========================= */
 
-.whatsapp-btn{
-position:fixed;
-bottom:30px;
-right:30px;
-background:#dc143c; /* YOUR RED BRAND COLOR */
-color:white;
-padding:14px 24px;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
-letter-spacing:.5px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-transition:all .3s ease;
-z-index:9999;
-}
-
-.whatsapp-btn:hover{
-transform:translateY(-6px) scale(1.05);
-box-shadow:0 20px 40px rgba(0,0,0,0.3);
-}
-
-/* WhatsApp Icon Adjustments */
-.whatsapp-btn i {
-  font-size: 28px;        /* icon size */
-  vertical-align: middle; /* centers icon inside button */
-}
-
-/* Responsive button for mobile */
-@media (max-width: 768px){
-  .whatsapp-btn {
-    padding: 10px;        /* smaller button on mobile */
-    bottom: 20px;         /* closer to edge */
-    right: 20px;
-  }
-  .whatsapp-btn i {
-    font-size: 22px;      /* smaller icon on mobile */
-  }
-}
-
-/* Make the button smaller for mobile */
-@media (max-width: 768px){
-  .whatsapp-btn {
-    padding:10px;        /* shrink the button */
-    bottom:20px;         /* closer to screen bottom */
-    right:20px;          /* closer to screen edge */
-  }
-  .whatsapp-btn i {
-    font-size:22px;      /* smaller icon on mobile */
-  }
-}
 
 .hero-sub{
 margin-top:20px;
@@ -1085,11 +1032,8 @@ ul {
   margin:0 auto;
   text-align:center;
 
-  background-image:
-  linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-image:none;
 
-  background-size:40px 40px;
   border-radius:10px;
 }
 
