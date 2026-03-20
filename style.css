@@ -1411,3 +1411,10 @@ html, body {
     font-size:0.95rem;
   }
 }
+
+/* HERO TITLE TOP SPACING FIX (MOBILE ONLY) */
+@media (max-width: 768px){
+  .hero{
+    padding-top:140px;
+  }
+}
