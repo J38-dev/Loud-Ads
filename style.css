@@ -1387,19 +1387,3 @@ html, body {
   }
 }
 
-/* FIX "1000+ DESIGNS CREATED" SECTION FOR MOBILE */
-@media (max-width: 768px){
-  .stats{
-    grid-template-columns: 1fr;   /* stack items */
-    gap:30px;
-    max-width:90%;
-  }
-
-  .stat h3{
-    font-size:2.2rem;             /* smaller numbers */
-  }
-
-  .stat p{
-    font-size:0.95rem;
-  }
-}
