@@ -1387,3 +1387,27 @@ html, body {
   }
 }
 
+/* TRUST SECTION RESPONSIVE FIX */
+@media (max-width: 768px){
+  .trust{
+    padding:90px 6%;
+  }
+
+  .trust h2{
+    font-size:2rem;
+    line-height:1.3;
+  }
+
+  .stats{
+    grid-template-columns:1fr; /* stack */
+    gap:30px;
+  }
+
+  .stat h3{
+    font-size:2.2rem;
+  }
+
+  .stat p{
+    font-size:0.95rem;
+  }
+}
