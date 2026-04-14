@@ -398,7 +398,7 @@ opacity:.6;
 .reviews{
 overflow:hidden;
 text-align:center;
-background:white;
+background:transparent;
 }
 
 .reviews h2{
@@ -663,7 +663,7 @@ body{
 .brands {
   text-align: center;
   padding: 120px 10%;
-  background: white; /* matches your site */
+  background: transparent; /* matches your site */
 }
 
 .brands h2 {
