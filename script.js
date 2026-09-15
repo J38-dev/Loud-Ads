@@ -269,31 +269,47 @@ const resultClose = document.getElementById("resultClose");
 const needData = {
 
   design:{
-    title:"Let's Build Your Visual Identity.",
-    text:"Tell us what you need designed and we'll help turn your idea into something people remember.",
-    button:"Start A Design Project",
-    link:"https://wa.me/27711507774"
+    title:"What Do You Need Designed?",
+    text:"Choose the type of design you're looking for.",
+    choices:[
+      "Logo Design",
+      "Social Media Graphics",
+      "Flyer / Poster",
+      "Full Brand Identity"
+    ]
   },
 
   website:{
-    title:"Let's Build Your Website.",
-    text:"Whether you need a simple business website or something more custom, let's create an online presence that works for your business.",
-    button:"Start A Website Project",
-    link:"https://wa.me/27711507774"
+    title:"What Kind Of Website Do You Need?",
+    text:"Choose the type of website that best describes what you're looking for.",
+    choices:[
+      "Business Website",
+      "Portfolio Website",
+      "Online Store",
+      "Something Custom"
+    ]
   },
 
   advertise:{
-    title:"Let's Get Your Business Seen.",
-    text:"Promote your business, product, service or special through Loud Ads. We're building a platform where businesses can put their advertisements in front of new customers.",
-    button:"Advertise Your Business",
-    link:"#advertise"
+    title:"What Do You Want To Advertise?",
+    text:"Choose what you want Loud Ads to promote.",
+    choices:[
+      "My Business",
+      "A Product",
+      "A Special / Sale",
+      "My Website"
+    ]
   },
 
   event:{
-    title:"Let's Make Some Noise.",
-    text:"Promote your event with a professionally designed advertisement that gets attention and sends customers straight to you.",
-    button:"Promote My Event",
-    link:"https://wa.me/27711507774"
+    title:"What Are You Promoting?",
+    text:"Choose the type of event you want to promote.",
+    choices:[
+      "Party / Entertainment",
+      "Business Event",
+      "Launch",
+      "Something Else"
+    ]
   }
 
 };
@@ -314,16 +330,59 @@ needCards.forEach(card=>{
 
     resultTitle.textContent = data.title;
     resultText.textContent = data.text;
-    resultButton.textContent = data.button;
-    resultButton.href = data.link;
+
+    resultButton.style.display = "none";
+
+    let oldChoices = document.querySelector(".result-choices");
+
+    if(oldChoices){
+      oldChoices.remove();
+    }
+
+    const choicesContainer = document.createElement("div");
+
+    choicesContainer.className = "result-choices";
+
+    data.choices.forEach((choiceName,index)=>{
+
+      const choiceButton = document.createElement("button");
+
+      choiceButton.className = "result-choice";
+
+      choiceButton.innerHTML = `
+        <span>0${index + 1}</span>
+        <strong>${choiceName}</strong>
+        <b>→</b>
+      `;
+
+      choiceButton.addEventListener("click",()=>{
+
+        const message =
+        `Hi Loud Ads, I'm interested in ${choiceName}. I'd like to find out more.`;
+
+        window.open(
+          "https://wa.me/27711507774?text=" +
+          encodeURIComponent(message),
+          "_blank"
+        );
+
+      });
+
+      choicesContainer.appendChild(choiceButton);
+
+    });
+
+    resultText.after(choicesContainer);
 
     needResult.classList.add("open");
 
     setTimeout(()=>{
+
       needResult.scrollIntoView({
         behavior:"smooth",
         block:"center"
       });
+
     },100);
 
   });
