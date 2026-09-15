@@ -2038,3 +2038,171 @@ html, body {
   }
 
     }
+
+/* =========================================================
+   LOUD ADS — WHAT DO YOU NEED GRID
+========================================================= */
+
+.need-section{
+  position:relative;
+  background-color:#fff;
+  background-image:
+    linear-gradient(#eee 1px, transparent 1px),
+    linear-gradient(90deg,#eee 1px,transparent 1px);
+  background-size:40px 40px;
+  overflow:hidden;
+}
+
+
+/* KEEP CONTENT ABOVE GRID */
+
+.need-section > *{
+  position:relative;
+  z-index:2;
+}
+
+
+/* INTERACTIVE CARDS */
+
+.need-card{
+  cursor:pointer;
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+.need-card:hover{
+  transform:translateY(-5px);
+}
+
+.need-card.active{
+  border-color:#dc143c;
+  background:rgba(220,20,60,.04);
+  transform:translateY(-5px);
+}
+
+
+/* RESULT PANEL */
+
+.need-result{
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  transform:translateY(20px);
+  transition:
+    max-height .6s ease,
+    opacity .4s ease,
+    transform .4s ease,
+    margin .4s ease;
+  margin-top:0;
+}
+
+.need-result.open{
+  max-height:1000px;
+  opacity:1;
+  transform:translateY(0);
+  margin-top:40px;
+}
+
+
+/* CHOICES */
+
+.result-choices{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-top:25px;
+}
+
+.result-choice{
+  width:100%;
+  min-height:64px;
+  display:grid;
+  grid-template-columns:45px 1fr 25px;
+  align-items:center;
+  gap:10px;
+
+  padding:15px 18px;
+
+  background:#fff;
+  border:1px solid #111;
+
+  color:#111;
+  text-align:left;
+
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.result-choice span{
+  font-size:.75rem;
+  font-weight:700;
+  color:#dc143c;
+}
+
+.result-choice strong{
+  font-size:.95rem;
+  font-weight:700;
+}
+
+.result-choice b{
+  font-size:1.2rem;
+  text-align:right;
+  transition:transform .25s ease;
+}
+
+.result-choice:hover{
+  background:#dc143c;
+  border-color:#dc143c;
+  color:#fff;
+  transform:translateX(5px);
+}
+
+.result-choice:hover span{
+  color:#fff;
+}
+
+.result-choice:hover b{
+  transform:translateX(5px);
+}
+
+
+/* CLOSE */
+
+#resultClose{
+  cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .need-section{
+    background-size:40px 40px;
+  }
+
+  .result-choice{
+    min-height:60px;
+    grid-template-columns:38px 1fr 20px;
+    padding:14px;
+  }
+
+}
+
+
+/* DESKTOP */
+
+@media(min-width:700px){
+
+  .result-choices{
+    grid-template-columns:1fr 1fr;
+  }
+
+  }
