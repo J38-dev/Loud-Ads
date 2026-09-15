@@ -17,7 +17,7 @@ btn.style.transform = "translate(0,0)";
 });
 
 const images = document.querySelectorAll(".masonry img");
-constconst images = document.querySelectorAll(".masonry img");
+const images = document.querySelectorAll(".masonry img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
@@ -118,6 +118,7 @@ viewer.onclick=()=>{
 
 
 const cursor = document.querySelector(".cursor");
+const cursorText = document.querySelector(".cursor-text");
 
 let mouseX = 0;
 let mouseY = 0;
