@@ -1362,3 +1362,548 @@ html, body {
     padding-top:140px;
   }
 }
+
+
+
+/* =========================================================
+   LOUD ADS — WHAT DO YOU NEED?
+========================================================= */
+
+.need-section{
+  padding:140px 6%;
+  text-align:center;
+  position:relative;
+}
+
+.need-header{
+  max-width:700px;
+  margin:0 auto 70px;
+}
+
+.section-label{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:3px;
+  margin-bottom:18px;
+  color:#dc143c;
+}
+
+.need-header h2,
+.loud-businesses-header h2,
+.advertise-inner h2{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  line-height:1;
+  letter-spacing:-2px;
+  margin-bottom:25px;
+}
+
+.need-header h2 span,
+.loud-businesses-header h2 span,
+.advertise-inner h2 span{
+  color:#dc143c;
+}
+
+.need-header > p:last-child{
+  max-width:600px;
+  margin:auto;
+  font-size:18px;
+  line-height:1.7;
+  opacity:.7;
+}
+
+
+/* OPTIONS */
+
+.need-options{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.need-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:25px;
+  width:100%;
+  min-height:150px;
+  padding:30px;
+  text-align:left;
+  background:rgba(255,255,255,.58);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(0,0,0,.1);
+  cursor:pointer;
+  transition:
+    transform .35s ease,
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.need-card:hover{
+  transform:translateY(-7px);
+  background:rgba(255,255,255,.9);
+  border-color:#dc143c;
+  box-shadow:0 20px 50px rgba(0,0,0,.1);
+}
+
+.need-card.active{
+  background:#000;
+  color:white;
+  border-color:#dc143c;
+  transform:translateY(-5px);
+}
+
+.need-number{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:#dc143c;
+  align-self:start;
+}
+
+.need-card h3{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.need-card p{
+  font-size:14px;
+  line-height:1.6;
+  opacity:.65;
+}
+
+.need-card.active p{
+  opacity:.75;
+}
+
+.need-arrow{
+  font-size:25px;
+  transition:transform .3s ease;
+}
+
+.need-card:hover .need-arrow{
+  transform:translateX(7px);
+}
+
+
+/* RESULT PANEL */
+
+.need-result{
+  max-width:900px;
+  margin:25px auto 0;
+  display:grid;
+  grid-template-rows:0fr;
+  opacity:0;
+  transition:
+    grid-template-rows .5s ease,
+    opacity .4s ease;
+}
+
+.need-result.open{
+  grid-template-rows:1fr;
+  opacity:1;
+}
+
+.result-content{
+  min-height:0;
+  overflow:hidden;
+  position:relative;
+  padding:0 50px;
+  background:#000;
+  color:white;
+  text-align:left;
+  border:1px solid #dc143c;
+  transition:padding .5s ease;
+}
+
+.need-result.open .result-content{
+  padding:50px;
+}
+
+.result-close{
+  position:absolute;
+  top:20px;
+  right:25px;
+  font-size:30px;
+  font-weight:300;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.result-close:hover{
+  color:#dc143c;
+  transform:rotate(90deg);
+}
+
+.result-content h3{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.result-content > p:not(.section-label){
+  max-width:650px;
+  line-height:1.7;
+  opacity:.7;
+}
+
+
+/* =========================================================
+   LOUD ADS — FEATURED BUSINESS ADS
+========================================================= */
+
+.loud-businesses{
+  padding:140px 6%;
+  position:relative;
+}
+
+.loud-businesses-header{
+  max-width:1000px;
+  margin:0 auto 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:50px;
+}
+
+.loud-businesses-header h2{
+  margin:0;
+}
+
+.loud-businesses-intro{
+  max-width:360px;
+  line-height:1.7;
+  opacity:.65;
+  text-align:right;
+}
+
+
+/* AD FEED */
+
+.ad-feed{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.business-ad{
+  background:rgba(255,255,255,.65);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(0,0,0,.1);
+  overflow:hidden;
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease,
+    border-color .4s ease;
+}
+
+.business-ad:hover{
+  transform:translateY(-10px);
+  border-color:rgba(220,20,60,.4);
+  box-shadow:0 25px 60px rgba(0,0,0,.14);
+}
+
+
+/* AD IMAGE */
+
+.ad-image-wrap{
+  position:relative;
+  aspect-ratio:4 / 5;
+  overflow:hidden;
+  background:#111;
+}
+
+.ad-image-wrap img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform .6s ease;
+}
+
+.business-ad:hover .ad-image-wrap img{
+  transform:scale(1.05);
+}
+
+.ad-badge{
+  position:absolute;
+  top:15px;
+  left:15px;
+  z-index:2;
+  padding:8px 12px;
+  background:#dc143c;
+  color:white;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+
+
+/* AD CONTENT */
+
+.ad-content{
+  padding:25px;
+  text-align:left;
+}
+
+.ad-meta{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:18px;
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:700;
+  color:#dc143c;
+}
+
+.ad-content h3{
+  font-size:24px;
+  margin-bottom:12px;
+}
+
+.ad-content p{
+  font-size:14px;
+  line-height:1.7;
+  opacity:.65;
+  min-height:72px;
+}
+
+.ad-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:20px;
+  padding-bottom:6px;
+  border-bottom:2px solid #dc143c;
+  color:black;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  transition:.3s ease;
+}
+
+.ad-link span{
+  transition:transform .3s ease;
+}
+
+.ad-link:hover{
+  color:#dc143c;
+}
+
+.ad-link:hover span{
+  transform:translateX(6px);
+}
+
+
+/* ADVERTISE CTA */
+
+.advertise-cta{
+  text-align:center;
+  margin-top:65px;
+}
+
+.advertise-cta p{
+  margin-bottom:5px;
+  font-size:14px;
+  opacity:.6;
+}
+
+
+/* =========================================================
+   ADVERTISE WITH LOUD ADS
+========================================================= */
+
+.advertise-section{
+  padding:150px 6%;
+  text-align:center;
+}
+
+.advertise-inner{
+  max-width:950px;
+  margin:auto;
+  padding:80px 50px;
+  background:#000;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.advertise-inner::before{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  right:-150px;
+  top:-180px;
+  background:radial-gradient(
+    circle,
+    rgba(220,20,60,.35),
+    transparent 70%
+  );
+  pointer-events:none;
+}
+
+.advertise-inner h2{
+  position:relative;
+}
+
+.advertise-inner > p:not(.section-label){
+  max-width:650px;
+  margin:0 auto;
+  line-height:1.7;
+  opacity:.65;
+  position:relative;
+}
+
+
+/* ADVERTISING TYPES */
+
+.advertise-options{
+  max-width:750px;
+  margin:60px auto 20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  position:relative;
+}
+
+.advertise-option{
+  padding:25px 18px;
+  border:1px solid rgba(255,255,255,.15);
+  text-align:left;
+  transition:.3s ease;
+}
+
+.advertise-option:hover{
+  border-color:#dc143c;
+  transform:translateY(-5px);
+}
+
+.advertise-option span{
+  font-size:10px;
+  color:#dc143c;
+  letter-spacing:2px;
+  font-weight:bold;
+}
+
+.advertise-option h3{
+  margin:20px 0 10px;
+  font-size:20px;
+}
+
+.advertise-option p{
+  font-size:13px;
+  line-height:1.6;
+  opacity:.55;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+  .need-section,
+  .loud-businesses,
+  .advertise-section{
+    padding:100px 6%;
+  }
+
+  .need-options{
+    grid-template-columns:1fr;
+  }
+
+  .need-card{
+    min-height:130px;
+  }
+
+  .loud-businesses-header{
+    display:block;
+  }
+
+  .loud-businesses-intro{
+    text-align:left;
+    margin-top:25px;
+  }
+
+  .ad-feed{
+    display:flex;
+    overflow-x:auto;
+    gap:18px;
+    padding-bottom:15px;
+    scroll-snap-type:x mandatory;
+  }
+
+  .business-ad{
+    min-width:82%;
+    scroll-snap-align:start;
+  }
+
+  .advertise-inner{
+    padding:60px 25px;
+  }
+
+  .advertise-options{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .need-header h2,
+  .loud-businesses-header h2,
+  .advertise-inner h2{
+    letter-spacing:-1.5px;
+  }
+
+  .need-card{
+    grid-template-columns:auto 1fr auto;
+    gap:15px;
+    padding:24px 20px;
+  }
+
+  .need-card h3{
+    font-size:19px;
+  }
+
+  .need-card p{
+    font-size:13px;
+  }
+
+  .need-card .need-arrow{
+    font-size:20px;
+  }
+
+  .result-content{
+    padding:0 25px;
+  }
+
+  .need-result.open .result-content{
+    padding:40px 25px;
+  }
+
+  .result-content h3{
+    font-size:26px;
+  }
+
+  .business-ad{
+    min-width:88%;
+  }
+
+  .ad-content{
+    padding:22px;
+  }
+
+  .advertise-inner{
+    padding:50px 20px;
+  }
+
+    }
