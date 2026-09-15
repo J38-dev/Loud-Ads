@@ -251,3 +251,127 @@ setTimeout(()=>{
     intro.remove();
   },800);
 },1500);
+
+
+
+
+/* =========================================================
+   LOUD ADS — WHAT DO YOU NEED?
+========================================================= */
+
+const needCards = document.querySelectorAll(".need-card");
+const needResult = document.getElementById("needResult");
+const resultTitle = document.getElementById("resultTitle");
+const resultText = document.getElementById("resultText");
+const resultButton = document.getElementById("resultButton");
+const resultClose = document.getElementById("resultClose");
+
+const needData = {
+
+  design:{
+    title:"Let's Build Your Visual Identity.",
+    text:"Tell us what you need designed and we'll help turn your idea into something people remember.",
+    button:"Start A Design Project",
+    link:"https://wa.me/27711507774"
+  },
+
+  website:{
+    title:"Let's Build Your Website.",
+    text:"Whether you need a simple business website or something more custom, let's create an online presence that works for your business.",
+    button:"Start A Website Project",
+    link:"https://wa.me/27711507774"
+  },
+
+  advertise:{
+    title:"Let's Get Your Business Seen.",
+    text:"Promote your business, product, service or special through Loud Ads. We're building a platform where businesses can put their advertisements in front of new customers.",
+    button:"Advertise Your Business",
+    link:"#advertise"
+  },
+
+  event:{
+    title:"Let's Make Some Noise.",
+    text:"Promote your event with a professionally designed advertisement that gets attention and sends customers straight to you.",
+    button:"Promote My Event",
+    link:"https://wa.me/27711507774"
+  }
+
+};
+
+
+needCards.forEach(card=>{
+
+  card.addEventListener("click",()=>{
+
+    const choice = card.dataset.choice;
+    const data = needData[choice];
+
+    needCards.forEach(item=>{
+      item.classList.remove("active");
+    });
+
+    card.classList.add("active");
+
+    resultTitle.textContent = data.title;
+    resultText.textContent = data.text;
+    resultButton.textContent = data.button;
+    resultButton.href = data.link;
+
+    needResult.classList.add("open");
+
+    setTimeout(()=>{
+      needResult.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+    },100);
+
+  });
+
+});
+
+
+/* CLOSE RESULT */
+
+resultClose.addEventListener("click",()=>{
+
+  needResult.classList.remove("open");
+
+  needCards.forEach(card=>{
+    card.classList.remove("active");
+  });
+
+});
+
+
+/* =========================================================
+   FEATURED AD INTERACTION
+========================================================= */
+
+document.querySelectorAll(".business-ad").forEach(ad=>{
+
+  ad.addEventListener("mouseenter",()=>{
+
+    if(window.innerWidth > 900){
+
+      const image = ad.querySelector(".ad-image-wrap img");
+
+      if(image){
+        image.style.transform = "scale(1.05)";
+      }
+
+    }
+
+  });
+
+  ad.addEventListener("mouseleave",()=>{
+
+    const image = ad.querySelector(".ad-image-wrap img");
+
+    if(image){
+      image.style.transform = "scale(1)";
+    }
+
+  });
+
+});
