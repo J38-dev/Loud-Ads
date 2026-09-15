@@ -17,19 +17,24 @@ btn.style.transform = "translate(0,0)";
 });
 
 const images = document.querySelectorAll(".masonry img");
+constconst images = document.querySelectorAll(".masonry img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
-images.forEach(img=>{
- img.addEventListener("click",()=>{
-   lightbox.style.display="flex";
-   lightboxImg.src = img.src;
- });
-});
+if (lightbox && lightboxImg) {
 
-lightbox.addEventListener("click",()=>{
- lightbox.style.display="none";
-});
+  images.forEach(img=>{
+    img.addEventListener("click",()=>{
+      lightbox.style.display="flex";
+      lightboxImg.src=img.src;
+    });
+  });
+
+  lightbox.addEventListener("click",()=>{
+    lightbox.style.display="none";
+  });
+
+   }
 
 window.addEventListener("scroll",()=>{
 let scroll =
@@ -75,24 +80,7 @@ nav.classList.remove("scrolled");
 });
 
 
-document.querySelectorAll("a, button, .portfolio-item")
-.forEach(el=>{
 
-  el.addEventListener("mouseenter",()=>{
-    cursor.style.width="70px";
-    cursor.style.height="70px";
-    cursor.style.background="#ff2b2b";
-    cursorText.innerHTML="VIEW";
-  });
-
-  el.addEventListener("mouseleave",()=>{
-    cursor.style.width="18px";
-    cursor.style.height="18px";
-    cursor.style.background="transparent";
-    cursorText.innerHTML="";
-  });
-
-});
 
 document.querySelectorAll(".visit-btn, nav a").forEach(btn=>{
 
@@ -141,6 +129,25 @@ document.addEventListener("mousemove",(e)=>{
   mouseY = e.clientY;
 });
 
+document.querySelectorAll("a, button, .portfolio-item")
+.forEach(el=>{
+
+  el.addEventListener("mouseenter",()=>{
+    cursor.style.width="70px";
+    cursor.style.height="70px";
+    cursor.style.background="#ff2b2b";
+    cursorText.innerHTML="VIEW";
+  });
+
+  el.addEventListener("mouseleave",()=>{
+    cursor.style.width="18px";
+    cursor.style.height="18px";
+    cursor.style.background="transparent";
+    cursorText.innerHTML="";
+  });
+
+});
+
 function animateCursor(){
 
   currentX += (mouseX - currentX) * 0.18;
@@ -184,73 +191,116 @@ document.querySelectorAll(".magnetic").forEach(btn=>{
 });
 
 // SELECT CANVASES
+
 const intro = document.getElementById("intro");
 const introCanvas = document.getElementById("introGrid");
 const paintCanvas = document.getElementById("paintCanvas");
-const introCtx = introCanvas.getContext("2d");
-const paintCtx = paintCanvas.getContext("2d");
 
-const colors = [
- "#dc143c",
- "#ff7a00",
- "#ffd000",
- "#00c2ff",
- "#7b2cff"
-];
+if (intro && introCanvas && paintCanvas) {
 
-// PAINT DROPS
-let drops = [];
-function createDrop(){
-  drops.push({
-    x: Math.random()*paintCanvas.width,
-    y: -50,
-    radius: Math.random()*40+20,
-    color: colors[Math.floor(Math.random()*colors.length)],
-    speed: Math.random()*4+2
-  });
-}
-const dropInterval = setInterval(createDrop,180);
+  const introCtx = introCanvas.getContext("2d");
+  const paintCtx = paintCanvas.getContext("2d");
 
-// ANIMATION LOOPS
-let introGridRunning = true;
-function drawIntroGrid(){
-  if(!introGridRunning) return;
-  introCtx.clearRect(0,0,introCanvas.width,introCanvas.height);
-  // ...grid drawing...
-  requestAnimationFrame(drawIntroGrid);
-}
-drawIntroGrid();
+  const colors = [
+    "#dc143c",
+    "#ff7a00",
+    "#ffd000",
+    "#00c2ff",
+    "#7b2cff"
+  ];
 
-let paintRunning = true;
-function animatePaint(){
-  if(!paintRunning) return;
-  paintCtx.clearRect(0,0,paintCanvas.width,paintCanvas.height);
-  drops.forEach(d=>{
-    d.y += d.speed;
-    paintCtx.beginPath();
-    paintCtx.arc(d.x,d.y,d.radius,0,Math.PI*2);
-    paintCtx.fillStyle = d.color;
-    paintCtx.fill();
-    d.radius *= 0.995;
-  });
-  requestAnimationFrame(animatePaint);
-}
-animatePaint();
+  let drops = [];
 
-// FADE OUT INTRO
-setTimeout(()=>{
-  intro.style.transition = "opacity 1s ease";
-  intro.style.opacity = 0;
+  function createDrop(){
 
-  // STOP ANIMATION LOOPS
-  introGridRunning = false;
-  paintRunning = false;
-  clearInterval(dropInterval);
+    drops.push({
+      x:Math.random()*paintCanvas.width,
+      y:-50,
+      radius:Math.random()*40+20,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      speed:Math.random()*4+2
+    });
+
+  }
+
+  const dropInterval=setInterval(createDrop,180);
+
+  let introGridRunning=true;
+
+  function drawIntroGrid(){
+
+    if(!introGridRunning)return;
+
+    introCtx.clearRect(
+      0,
+      0,
+      introCanvas.width,
+      introCanvas.height
+    );
+
+    requestAnimationFrame(drawIntroGrid);
+
+  }
+
+  drawIntroGrid();
+
+  let paintRunning=true;
+
+  function animatePaint(){
+
+    if(!paintRunning)return;
+
+    paintCtx.clearRect(
+      0,
+      0,
+      paintCanvas.width,
+      paintCanvas.height
+    );
+
+    drops.forEach(d=>{
+
+      d.y+=d.speed;
+
+      paintCtx.beginPath();
+
+      paintCtx.arc(
+        d.x,
+        d.y,
+        d.radius,
+        0,
+        Math.PI*2
+      );
+
+      paintCtx.fillStyle=d.color;
+      paintCtx.fill();
+
+      d.radius*=0.995;
+
+    });
+
+    requestAnimationFrame(animatePaint);
+
+  }
+
+  animatePaint();
 
   setTimeout(()=>{
-    intro.remove();
-  },800);
-},1500);
+
+    intro.style.transition="opacity 1s ease";
+    intro.style.opacity=0;
+
+    introGridRunning=false;
+    paintRunning=false;
+
+    clearInterval(dropInterval);
+
+    setTimeout(()=>{
+      intro.remove();
+    },800);
+
+  },1500);
+
+       }
 
 
 
