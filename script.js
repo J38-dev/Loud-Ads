@@ -1,454 +1,695 @@
-/* =========================
-   MAGNETIC BUTTON
-========================= */
+/* =========================================================
+LOUD ADS — LANDING PAGE JAVASCRIPT
+========================================================= */
 
+/* =========================================================
 
-window.addEventListener("scroll",()=>{
-let scroll =
-window.scrollY /
-(document.body.scrollHeight - window.innerHeight);
+1. HELPERS
+   ========================================================= */
 
-document.getElementById("progress").style.width =
-(scroll * 100) + "%";
-});
+const $ = (selector, parent = document) =>
+parent.querySelector(selector);
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener("click",function(e){
-e.preventDefault();
+const $$ = (selector, parent = document) =>
+[...parent.querySelectorAll(selector)];
 
-document.querySelector(this.getAttribute("href"))
-.scrollIntoView({
-behavior:"smooth"
-});
-});
-});
+/* =========================================================
+02. SCROLL PROGRESS
+========================================================= */
 
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.style.opacity=1;
-entry.target.style.transform="translateY(0)";
-}
-});
-},{threshold:0.2});
+const progress = $("#progress");
 
-document.querySelectorAll("section").forEach(sec=>{
-observer.observe(sec);
-});
+function updateProgress(){
 
-window.addEventListener("scroll", () => {
-const nav = document.querySelector(".nav");
+if(!progress) return;
 
-if(window.scrollY > 50){
-nav.classList.add("scrolled");
-}else{
-nav.classList.remove("scrolled");
-}
-});
+const pageHeight =
+document.documentElement.scrollHeight - window.innerHeight;
 
+const amount =
+pageHeight > 0
+? (window.scrollY / pageHeight) * 100
+: 0;
 
+progress.style.width = "${amount}%";
 
-
-document.querySelectorAll(".visit-btn, nav a").forEach(btn=>{
-
-  btn.addEventListener("mousemove",e=>{
-    const rect = btn.getBoundingClientRect();
-
-    const x = e.clientX - rect.left - rect.width/2;
-    const y = e.clientY - rect.top - rect.height/2;
-
-    btn.style.transform =
-      `translate(${x*0.2}px, ${y*0.2}px)`;
-  });
-
-  btn.addEventListener("mouseleave",()=>{
-    btn.style.transform="translate(0,0)";
-  });
-
-});
-
-
-const viewer = document.getElementById("viewer");
-const viewerImg = document.getElementById("viewer-img");
-
-document.querySelectorAll(".masonry img")
-.forEach(img=>{
-  img.onclick = ()=>{
-    viewer.style.display="flex";
-    viewerImg.src = img.src;
-  }
-});
-
-viewer.onclick=()=>{
-  viewer.style.display="none";
 }
 
+window.addEventListener("scroll", updateProgress, {passive:true});
 
-const cursor = document.querySelector(".cursor");
-const cursorText = document.querySelector(".cursor-text");
+updateProgress();
 
-let mouseX = 0;
-let mouseY = 0;
-let currentX = 0;
-let currentY = 0;
+/* =========================================================
+03. SMOOTH ANCHOR LINKS
+========================================================= */
 
-document.addEventListener("mousemove",(e)=>{
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+$$('a[href^="#"]').forEach(link => {
+
+link.addEventListener("click", event => {
+
+const targetId = link.getAttribute("href");
+
+if(!targetId || targetId === "#") return;
+
+const target = $(targetId);
+
+if(!target) return;
+
+event.preventDefault();
+
+target.scrollIntoView({
+  behavior:"smooth",
+  block:"start"
 });
 
-document.querySelectorAll("a, button, .portfolio-item")
-.forEach(el=>{
+});
 
-  el.addEventListener("mouseenter",()=>{
-    cursor.style.width="70px";
-    cursor.style.height="70px";
-    cursor.style.background="#ff2b2b";
-    cursorText.innerHTML="VIEW";
-  });
+});
 
-  el.addEventListener("mouseleave",()=>{
-    cursor.style.width="18px";
-    cursor.style.height="18px";
-    cursor.style.background="transparent";
-    cursorText.innerHTML="";
-  });
+/* =========================================================
+04. NAVIGATION STATE
+========================================================= */
+
+const nav = $(".nav");
+
+function updateNav(){
+
+if(!nav) return;
+
+nav.classList.toggle(
+"scrolled",
+window.scrollY > 40
+);
+
+}
+
+window.addEventListener("scroll", updateNav, {passive:true});
+
+updateNav();
+
+/* =========================================================
+05. CUSTOM CURSOR
+========================================================= */
+
+const cursor = $(".cursor");
+const cursorText = $(".cursor-text");
+
+const canUseCursor =
+window.matchMedia("(pointer:fine)").matches &&
+cursor &&
+cursorText;
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let cursorX = mouseX;
+let cursorY = mouseY;
+
+if(canUseCursor){
+
+document.addEventListener("mousemove", event => {
+
+mouseX = event.clientX;
+mouseY = event.clientY;
 
 });
 
 function animateCursor(){
 
-  currentX += (mouseX - currentX) * 0.18;
-  currentY += (mouseY - currentY) * 0.18;
+cursorX += (mouseX - cursorX) * .18;
+cursorY += (mouseY - cursorY) * .18;
 
-  cursor.style.transform =
-    `translate3d(${currentX}px, ${currentY}px,0)`;
+cursor.style.left = `${cursorX}px`;
+cursor.style.top = `${cursorY}px`;
 
-  requestAnimationFrame(animateCursor);
+cursorText.style.left = `${cursorX}px`;
+cursorText.style.top = `${cursorY}px`;
+
+requestAnimationFrame(animateCursor);
+
 }
 
 animateCursor();
 
-document.querySelectorAll(".magnetic").forEach(btn=>{
+}
 
-  btn.addEventListener("mousemove", e=>{
+/* =========================================================
+06. CURSOR STATES
+========================================================= */
 
-    const rect = btn.getBoundingClientRect();
+function setCursor(text = "", active = false){
 
-    const x = e.clientX - rect.left - rect.width/2;
-    const y = e.clientY - rect.top - rect.height/2;
+if(!canUseCursor) return;
 
-    btn.style.transform =
-      `translate(${x*0.25}px, ${y*0.25}px) scale(1.05)`;
+cursorText.textContent = text;
 
-    cursor.style.width="60px";
-    cursor.style.height="60px";
-    cursor.style.background="#dc143c22";
+cursor.style.width = active ? "68px" : "18px";
+cursor.style.height = active ? "68px" : "18px";
 
-  });
+cursor.style.background =
+active ? "var(--red)" : "transparent";
 
-  btn.addEventListener("mouseleave",()=>{
+cursor.style.borderColor =
+active ? "var(--red)" : "var(--red)";
 
-    btn.style.transform="translate(0,0) scale(1)";
+}
 
-    cursor.style.width="18px";
-    cursor.style.height="18px";
-    cursor.style.background="transparent";
-  });
+if(canUseCursor){
+
+$$("a, button").forEach(element => {
+
+let label = "OPEN";
+
+if(
+  element.classList.contains("magnetic") ||
+  element.classList.contains("portfolio-cta")
+){
+  label = "START";
+}
+
+if(
+  element.classList.contains("project-card")
+){
+  label = "VIEW";
+}
+
+if(
+  element.classList.contains("need-card")
+){
+  label = "EXPLORE";
+}
+
+if(
+  element.classList.contains("creative-tab") ||
+  element.classList.contains("service-row")
+){
+  label = "SELECT";
+}
+
+element.addEventListener("mouseenter", () => {
+  setCursor(label, true);
+});
+
+element.addEventListener("mouseleave", () => {
+  setCursor();
+});
 
 });
 
-// SELECT CANVASES
-
-const intro = document.getElementById("intro");
-const introCanvas = document.getElementById("introGrid");
-const paintCanvas = document.getElementById("paintCanvas");
-
-if (intro && introCanvas && paintCanvas) {
-
-  const introCtx = introCanvas.getContext("2d");
-  const paintCtx = paintCanvas.getContext("2d");
-
-  const colors = [
-    "#dc143c",
-    "#ff7a00",
-    "#ffd000",
-    "#00c2ff",
-    "#7b2cff"
-  ];
-
-  let drops = [];
-
-  function createDrop(){
-
-    drops.push({
-      x:Math.random()*paintCanvas.width,
-      y:-50,
-      radius:Math.random()*40+20,
-      color:colors[Math.floor(Math.random()*colors.length)],
-      speed:Math.random()*4+2
-    });
-
-  }
-
-  const dropInterval=setInterval(createDrop,180);
-
-  let introGridRunning=true;
-
-  function drawIntroGrid(){
-
-    if(!introGridRunning)return;
-
-    introCtx.clearRect(
-      0,
-      0,
-      introCanvas.width,
-      introCanvas.height
-    );
-
-    requestAnimationFrame(drawIntroGrid);
-
-  }
-
-  drawIntroGrid();
-
-  let paintRunning=true;
-
-  function animatePaint(){
-
-    if(!paintRunning)return;
-
-    paintCtx.clearRect(
-      0,
-      0,
-      paintCanvas.width,
-      paintCanvas.height
-    );
-
-    drops.forEach(d=>{
-
-      d.y+=d.speed;
-
-      paintCtx.beginPath();
-
-      paintCtx.arc(
-        d.x,
-        d.y,
-        d.radius,
-        0,
-        Math.PI*2
-      );
-
-      paintCtx.fillStyle=d.color;
-      paintCtx.fill();
-
-      d.radius*=0.995;
-
-    });
-
-    requestAnimationFrame(animatePaint);
-
-  }
-
-  animatePaint();
-
-  setTimeout(()=>{
-
-    intro.style.transition="opacity 1s ease";
-    intro.style.opacity=0;
-
-    introGridRunning=false;
-    paintRunning=false;
-
-    clearInterval(dropInterval);
-
-    setTimeout(()=>{
-      intro.remove();
-    },800);
-
-  },1500);
-
-       }
-
-
-
+}
 
 /* =========================================================
-   LOUD ADS — WHAT DO YOU NEED?
+07. MAGNETIC BUTTONS
 ========================================================= */
 
-const needCards = document.querySelectorAll(".need-card");
-const needResult = document.getElementById("needResult");
-const resultTitle = document.getElementById("resultTitle");
-const resultText = document.getElementById("resultText");
-const resultButton = document.getElementById("resultButton");
-const resultClose = document.getElementById("resultClose");
+if(canUseCursor){
+
+$$(".magnetic").forEach(button => {
+
+button.addEventListener("mousemove", event => {
+
+  const rect =
+    button.getBoundingClientRect();
+
+  const x =
+    event.clientX -
+    rect.left -
+    rect.width / 2;
+
+  const y =
+    event.clientY -
+    rect.top -
+    rect.height / 2;
+
+  button.style.transform =
+    `translate(${x * .18}px,${y * .18}px)`;
+
+});
+
+button.addEventListener("mouseleave", () => {
+
+  button.style.transform =
+    "translate(0,0)";
+
+});
+
+});
+
+}
+
+/* =========================================================
+08. HERO MOVEMENT
+========================================================= */
+
+const hero = $(".hero");
+const heroLogo = $(".hero-logo");
+
+if(
+hero &&
+heroLogo &&
+window.matchMedia("(pointer:fine)").matches
+){
+
+hero.addEventListener("mousemove", event => {
+
+const rect =
+  hero.getBoundingClientRect();
+
+const x =
+  (event.clientX - rect.left) /
+  rect.width -
+  .5;
+
+const y =
+  (event.clientY - rect.top) /
+  rect.height -
+  .5;
+
+heroLogo.style.transform =
+  `translate(${x * 14}px,${y * 10}px)`;
+
+});
+
+hero.addEventListener("mouseleave", () => {
+
+heroLogo.style.transform =
+  "translate(0,0)";
+
+});
+
+}
+
+/* =========================================================
+09. WHAT DO YOU NEED?
+========================================================= */
+
+const needCards = $$(".need-card");
+const needResult = $("#needResult");
+const resultTitle = $("#resultTitle");
+const resultText = $("#resultText");
+const resultChoices = $("#resultChoices");
+const resultClose = $("#resultClose");
 
 const needData = {
 
-  design:{
-    title:"What Do You Need Designed?",
-    text:"Choose the type of design you're looking for.",
-    choices:[
-      "Logo Design",
-      "Social Media Graphics",
-      "Flyer / Poster",
-      "Full Brand Identity"
-    ]
-  },
+design:{
+title:"What do you need designed?",
+text:"Choose the type of design you're looking for.",
+choices:[
+"Logo Design",
+"Social Media Graphics",
+"Flyer / Poster",
+"Full Brand Identity"
+]
+},
 
-  website:{
-    title:"What Kind Of Website Do You Need?",
-    text:"Choose the type of website that best describes what you're looking for.",
-    choices:[
-      "Business Website",
-      "Portfolio Website",
-      "Online Store",
-      "Something Custom"
-    ]
-  },
+website:{
+title:"What kind of website do you need?",
+text:"Choose the type of website that best describes your idea.",
+choices:[
+"Business Website",
+"Portfolio Website",
+"Online Store",
+"Something Custom"
+]
+},
 
-  advertise:{
-    title:"What Do You Want To Advertise?",
-    text:"Choose what you want Loud Ads to promote.",
-    choices:[
-      "My Business",
-      "A Product",
-      "A Special / Sale",
-      "My Website"
-    ]
-  },
+advertise:{
+title:"What do you want to advertise?",
+text:"Choose what you want Loud Ads to promote.",
+choices:[
+"My Business",
+"A Product",
+"A Special / Sale",
+"My Website"
+]
+},
 
-  event:{
-    title:"What Are You Promoting?",
-    text:"Choose the type of event you want to promote.",
-    choices:[
-      "Party / Entertainment",
-      "Business Event",
-      "Launch",
-      "Something Else"
-    ]
-  }
+event:{
+title:"What are you promoting?",
+text:"Choose what you're promoting and we'll take it from there.",
+choices:[
+"Party / Entertainment",
+"Business Event",
+"Launch",
+"Something Else"
+]
+}
 
 };
 
+function createWhatsAppLink(choice){
 
-needCards.forEach(card=>{
+const message =
+"Hi Loud Ads, I'm interested in ${choice}. I'd like to find out more.";
 
-  card.addEventListener("click",()=>{
+return(
+"https://wa.me/27711507774?text=" +
+encodeURIComponent(message)
+);
 
-    const choice = card.dataset.choice;
-    const data = needData[choice];
+}
 
-    needCards.forEach(item=>{
-      item.classList.remove("active");
-    });
+function showNeedResult(type){
 
-    card.classList.add("active");
+const data = needData[type];
 
-    resultTitle.textContent = data.title;
-    resultText.textContent = data.text;
+if(
+!data ||
+!needResult ||
+!resultTitle ||
+!resultText ||
+!resultChoices
+) return;
 
-    resultButton.style.display = "none";
+needCards.forEach(card => {
 
-    let oldChoices = document.querySelector(".result-choices");
-
-    if(oldChoices){
-      oldChoices.remove();
-    }
-
-    const choicesContainer = document.createElement("div");
-
-    choicesContainer.className = "result-choices";
-
-    data.choices.forEach((choiceName,index)=>{
-
-      const choiceButton = document.createElement("button");
-
-      choiceButton.className = "result-choice";
-
-      choiceButton.innerHTML = `
-        <span>0${index + 1}</span>
-        <strong>${choiceName}</strong>
-        <b>→</b>
-      `;
-
-      choiceButton.addEventListener("click",()=>{
-
-        const message =
-        `Hi Loud Ads, I'm interested in ${choiceName}. I'd like to find out more.`;
-
-        window.open(
-          "https://wa.me/27711507774?text=" +
-          encodeURIComponent(message),
-          "_blank"
-        );
-
-      });
-
-      choicesContainer.appendChild(choiceButton);
-
-    });
-
-    resultText.after(choicesContainer);
-
-    needResult.classList.add("open");
-
-    setTimeout(()=>{
-
-      needResult.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-      });
-
-    },100);
-
-  });
+card.classList.toggle(
+  "active",
+  card.dataset.choice === type
+);
 
 });
 
+resultTitle.textContent =
+data.title;
 
-/* CLOSE RESULT */
+resultText.textContent =
+data.text;
 
-resultClose.addEventListener("click",()=>{
+resultChoices.innerHTML = "";
 
-  needResult.classList.remove("open");
+data.choices.forEach((choice,index) => {
 
-  needCards.forEach(card=>{
-    card.classList.remove("active");
-  });
+const link =
+  document.createElement("a");
+
+link.className =
+  "result-choice";
+
+link.href =
+  createWhatsAppLink(choice);
+
+link.target =
+  "_blank";
+
+link.innerHTML = `
+  <span>0${index + 1}</span>
+  <strong>${choice}</strong>
+  <b>→</b>
+`;
+
+resultChoices.appendChild(link);
 
 });
 
+needResult.classList.add("open");
+
+setTimeout(() => {
+
+needResult.scrollIntoView({
+  behavior:"smooth",
+  block:"center"
+});
+
+},120);
+
+}
+
+needCards.forEach(card => {
+
+card.addEventListener("click", () => {
+
+showNeedResult(
+  card.dataset.choice
+);
+
+});
+
+});
+
+if(resultClose){
+
+resultClose.addEventListener("click", () => {
+
+needResult.classList.remove("open");
+
+needCards.forEach(card => {
+  card.classList.remove("active");
+});
+
+});
+
+}
 
 /* =========================================================
-   FEATURED AD INTERACTION
+10. CREATIVE SWITCHER
 ========================================================= */
 
-document.querySelectorAll(".business-ad").forEach(ad=>{
+const creativeTabs =
+$$(".creative-tab");
 
-  ad.addEventListener("mouseenter",()=>{
+const creativePanels =
+$$(".creative-panel");
 
-    if(window.innerWidth > 900){
+creativeTabs.forEach(tab => {
 
-      const image = ad.querySelector(".ad-image-wrap img");
+tab.addEventListener("click", () => {
 
-      if(image){
-        image.style.transform = "scale(1.05)";
-      }
+const view =
+  tab.dataset.view;
 
-    }
+creativeTabs.forEach(item => {
 
-  });
-
-  ad.addEventListener("mouseleave",()=>{
-
-    const image = ad.querySelector(".ad-image-wrap img");
-
-    if(image){
-      image.style.transform = "scale(1)";
-    }
-
-  });
+  item.classList.toggle(
+    "active",
+    item === tab
+  );
 
 });
+
+creativePanels.forEach(panel => {
+
+  panel.classList.toggle(
+    "active",
+    panel.dataset.panel === view
+  );
+
+});
+
+});
+
+});
+
+/* =========================================================
+11. SERVICES ACCORDION
+========================================================= */
+
+const serviceRows =
+$$(".service-row");
+
+serviceRows.forEach(row => {
+
+row.addEventListener("click", () => {
+
+const wasActive =
+  row.classList.contains("active");
+
+serviceRows.forEach(item => {
+  item.classList.remove("active");
+});
+
+if(!wasActive){
+  row.classList.add("active");
+}
+
+});
+
+});
+
+/* =========================================================
+12. PROJECT IMAGE VIEWER
+========================================================= */
+
+const viewer =
+$("#viewer");
+
+const viewerImg =
+$("#viewer-img");
+
+$$(".project-image img").forEach(image => {
+
+image.addEventListener("click", event => {
+
+event.preventDefault();
+event.stopPropagation();
+
+if(!viewer || !viewerImg) return;
+
+viewerImg.src =
+  image.src;
+
+viewerImg.alt =
+  image.alt || "";
+
+viewer.style.display =
+  "flex";
+
+});
+
+});
+
+if(viewer){
+
+viewer.addEventListener("click", () => {
+
+viewer.style.display =
+  "none";
+
+if(viewerImg){
+  viewerImg.src = "";
+}
+
+});
+
+}
+
+if(viewerImg){
+
+viewerImg.addEventListener("click", event => {
+event.stopPropagation();
+});
+
+}
+
+/* =========================================================
+13. PROJECT HOVER
+========================================================= */
+
+if(
+window.matchMedia("(pointer:fine)").matches
+){
+
+$$(".project-card").forEach(project => {
+
+project.addEventListener("mousemove", event => {
+
+  const image =
+    $(".project-image img", project);
+
+  if(!image) return;
+
+  const rect =
+    project.getBoundingClientRect();
+
+  const x =
+    (event.clientX - rect.left) /
+    rect.width -
+    .5;
+
+  const y =
+    (event.clientY - rect.top) /
+    rect.height -
+    .5;
+
+  image.style.transform =
+    `scale(1.045) translate(${x * 5}px,${y * 5}px)`;
+
+});
+
+project.addEventListener("mouseleave", () => {
+
+  const image =
+    $(".project-image img", project);
+
+  if(image){
+
+    image.style.transform =
+      "";
+
+  }
+
+});
+
+});
+
+}
+
+/* =========================================================
+14. REVEAL ON SCROLL
+========================================================= */
+
+const revealElements =
+$$(".project-card, .creative-panel, .service-row, .step-card, .brand");
+
+const revealObserver =
+new IntersectionObserver(
+entries => {
+
+  entries.forEach(entry => {
+
+    if(!entry.isIntersecting) return;
+
+    entry.target.classList.add("visible");
+
+    revealObserver.unobserve(
+      entry.target
+    );
+
+  });
+
+},
+{
+  threshold:.12
+}
+
+);
+
+revealElements.forEach(element => {
+
+revealObserver.observe(element);
+
+});
+
+/* =========================================================
+15. MOBILE TAP FEEDBACK
+========================================================= */
+
+if(
+window.matchMedia("(pointer:coarse)").matches
+){
+
+$$(".project-card, .brand, .need-card").forEach(element => {
+
+element.addEventListener(
+  "touchstart",
+  () => {
+    element.classList.add("touching");
+  },
+  {passive:true}
+);
+
+element.addEventListener(
+  "touchend",
+  () => {
+    element.classList.remove("touching");
+  },
+  {passive:true}
+);
+
+});
+
+}
+
+/* =========================================================
+16. REDUCED MOTION
+========================================================= */
+
+if(
+window.matchMedia("(prefers-reduced-motion:reduce)").matches
+){
+
+document.documentElement.style.scrollBehavior =
+"auto";
+
+}
