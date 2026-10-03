@@ -2363,173 +2363,120 @@ html, body {
   }
   }
 
+
+
+
+
+
+
+
 /* =========================================================
-   LOUD ADS — MODERN CENTER NAV
+   LOUD ADS — FINAL NAV
 ========================================================= */
 
 .nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:88px;
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  width:100% !important;
+  height:88px !important;
 
-  padding:0 5%;
+  padding:0 5% !important;
 
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
+  display:grid !important;
+  grid-template-columns:1fr auto 1fr !important;
+  align-items:center !important;
 
-  background:rgba(255,255,255,.82);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
+  background:rgba(255,255,255,.88) !important;
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
 
-  border-bottom:1px solid rgba(0,0,0,.08);
+  border-bottom:1px solid rgba(0,0,0,.08) !important;
 
-  z-index:9999;
+  z-index:9999 !important;
 }
 
 .nav-brand{
-  grid-column:2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:max-content;
-  margin:auto;
+  grid-column:2 !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  margin:0 auto !important;
 }
 
 .nav-brand img{
-  display:block;
-  width:145px;
-  height:auto;
+  display:block !important;
+  width:145px !important;
+  height:auto !important;
 }
 
-.nav-side{
-  display:flex;
-  align-items:center;
-  gap:32px;
+.nav-menu{
+  display:flex !important;
+  align-items:center !important;
+  gap:28px !important;
 }
 
-.nav-left{
-  grid-column:1;
-  justify-content:flex-start;
+.nav-menu-left{
+  grid-column:1 !important;
+  justify-content:flex-start !important;
 }
 
-.nav-right{
-  grid-column:3;
-  justify-content:flex-end;
+.nav-menu-right{
+  grid-column:3 !important;
+  justify-content:flex-end !important;
 }
 
-.nav-side a{
-  position:relative;
+.nav-menu a{
+  display:inline-flex !important;
+  align-items:center !important;
 
-  color:#111;
-  text-decoration:none;
+  color:#111 !important;
+  text-decoration:none !important;
 
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:1.8px;
-  text-transform:uppercase;
+  font-size:10px !important;
+  font-weight:700 !important;
+  letter-spacing:1.6px !important;
+  text-transform:uppercase !important;
 
-  transition:color .25s ease;
+  white-space:nowrap !important;
+
+  transition:color .25s ease !important;
 }
 
-.nav-side a:not(.nav-project)::after{
-  content:"";
-
-  position:absolute;
-  left:0;
-  bottom:-7px;
-
-  width:0;
-  height:1px;
-
-  background:#dc143c;
-
-  transition:width .3s ease;
-}
-
-.nav-side a:not(.nav-project):hover{
-  color:#dc143c;
-}
-
-.nav-side a:not(.nav-project):hover::after{
-  width:100%;
+.nav-menu a:hover{
+  color:#dc143c !important;
 }
 
 .nav-project{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
 
-  min-width:125px;
-  height:40px;
+  width:125px !important;
+  min-width:125px !important;
+  height:40px !important;
 
-  padding:0 18px;
+  padding:0 !important;
 
-  background:#111;
+  background:#111 !important;
   color:#fff !important;
 
   transition:
     background .25s ease,
-    color .25s ease,
-    transform .25s ease;
+    transform .25s ease !important;
 }
 
 .nav-project:hover{
-  background:#dc143c;
-  transform:translateY(-2px);
+  background:#dc143c !important;
+  color:#fff !important;
+  transform:translateY(-2px) !important;
 }
 
 
-/* ================= MOBILE ================= */
-
-@media(max-width:700px){
-
-  .nav{
-    height:70px;
-    padding:0 16px;
-
-    grid-template-columns:1fr auto 1fr;
-  }
-
-  .nav-brand img{
-    width:105px;
-  }
-
-  .nav-side{
-    gap:0;
-  }
-
-  .nav-left{
-    justify-content:flex-start;
-  }
-
-  .nav-right{
-    justify-content:flex-end;
-  }
-
-  .nav-left a{
-    display:none;
-  }
-
-  .nav-right a:first-child{
-    display:none;
-  }
-
-  .nav-side .nav-project{
-    min-width:auto;
-    height:36px;
-    padding:0 12px;
-
-    font-size:8px;
-    letter-spacing:1px;
-  }
-  }
-
 /* =========================================================
-   LOUD ADS — NAV SCROLL LOCK
-   Keeps navigation sizing consistent while scrolling
+   STOP THE NAV CHANGING WHEN SCROLLING
 ========================================================= */
 
 .nav.scrolled{
@@ -2539,62 +2486,62 @@ html, body {
 
 .nav.scrolled .nav-brand img{
   width:145px !important;
-  height:auto !important;
 }
 
-.nav.scrolled .nav-side{
-  gap:32px !important;
+.nav.scrolled .nav-menu{
+  gap:28px !important;
 }
 
-.nav.scrolled .nav-side a{
+.nav.scrolled .nav-menu a{
   font-size:10px !important;
 }
 
 .nav.scrolled .nav-project{
-  min-width:125px !important;
   width:125px !important;
+  min-width:125px !important;
   height:40px !important;
-  padding:0 18px !important;
+  padding:0 !important;
 
   font-size:10px !important;
-  letter-spacing:1.8px !important;
-
   background:#111 !important;
-  color:#fff !important;
-
-  transform:none;
 }
 
-@media(max-width:900px){
 
-  .nav-left a:first-child{
-    display:none;
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+  .nav-menu{
+    gap:18px !important;
   }
 
-  .nav-left{
-    gap:18px;
+  .nav-menu a{
+    font-size:9px !important;
+    letter-spacing:1px !important;
   }
 
-  .nav-right{
-    gap:18px;
-  }
-
-  .nav-right a:nth-child(2){
-    display:none;
+  .nav-project{
+    width:112px !important;
+    min-width:112px !important;
   }
 
 }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
-  .nav{
-    height:70px !important;
-    padding:0 16px !important;
-  }
-
+  .nav,
   .nav.scrolled{
     height:70px !important;
     padding:0 16px !important;
+
+    grid-template-columns:1fr auto 1fr !important;
   }
 
   .nav-brand img,
@@ -2602,24 +2549,19 @@ html, body {
     width:105px !important;
   }
 
-  .nav-left a{
+  .nav-menu-left a{
     display:none !important;
   }
 
-  .nav-right a:first-child{
-    display:none !important;
-  }
-
-  .nav-right a:nth-child(2){
+  .nav-menu-right a:not(.nav-project){
     display:none !important;
   }
 
   .nav-project,
   .nav.scrolled .nav-project{
-    min-width:110px !important;
     width:110px !important;
+    min-width:110px !important;
     height:36px !important;
-    padding:0 10px !important;
 
     font-size:8px !important;
     letter-spacing:1px !important;
