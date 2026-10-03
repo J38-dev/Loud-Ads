@@ -2362,3 +2362,98 @@ html, body {
     letter-spacing:1.5px;
   }
   }
+
+/* =========================================================
+   LOUD ADS — NAVIGATION
+========================================================= */
+
+.nav{
+  height:82px;
+  padding:0 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.nav-brand{
+  display:flex;
+  align-items:center;
+}
+
+.nav .logo{
+  width:150px;
+  height:auto;
+  display:block;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  margin:0;
+}
+
+.nav-links a{
+  color:#111;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  transition:.25s ease;
+}
+
+.nav-links a:hover{
+  color:#dc143c;
+}
+
+.nav-links .nav-cta{
+  background:#dc143c;
+  color:#fff;
+  padding:13px 20px;
+}
+
+.nav-links .nav-cta:hover{
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(220,20,60,.2);
+}
+
+@media(max-width:700px){
+
+  .nav{
+    height:70px;
+    padding:0 18px;
+  }
+
+  .nav .logo{
+    width:115px;
+  }
+
+  .nav-links{
+    gap:13px;
+  }
+
+  .nav-links a{
+    font-size:8px;
+    letter-spacing:.8px;
+  }
+
+  .nav-links a:nth-child(2){
+    display:none;
+  }
+
+  .nav-links .nav-cta{
+    padding:10px 12px;
+  }
+    }
+
