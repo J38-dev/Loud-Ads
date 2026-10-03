@@ -2526,3 +2526,103 @@ html, body {
     letter-spacing:1px;
   }
   }
+
+/* =========================================================
+   LOUD ADS — NAV SCROLL LOCK
+   Keeps navigation sizing consistent while scrolling
+========================================================= */
+
+.nav.scrolled{
+  height:88px !important;
+  padding:0 5% !important;
+}
+
+.nav.scrolled .nav-brand img{
+  width:145px !important;
+  height:auto !important;
+}
+
+.nav.scrolled .nav-side{
+  gap:32px !important;
+}
+
+.nav.scrolled .nav-side a{
+  font-size:10px !important;
+}
+
+.nav.scrolled .nav-project{
+  min-width:125px !important;
+  width:125px !important;
+  height:40px !important;
+  padding:0 18px !important;
+
+  font-size:10px !important;
+  letter-spacing:1.8px !important;
+
+  background:#111 !important;
+  color:#fff !important;
+
+  transform:none;
+}
+
+@media(max-width:900px){
+
+  .nav-left a:first-child{
+    display:none;
+  }
+
+  .nav-left{
+    gap:18px;
+  }
+
+  .nav-right{
+    gap:18px;
+  }
+
+  .nav-right a:nth-child(2){
+    display:none;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .nav{
+    height:70px !important;
+    padding:0 16px !important;
+  }
+
+  .nav.scrolled{
+    height:70px !important;
+    padding:0 16px !important;
+  }
+
+  .nav-brand img,
+  .nav.scrolled .nav-brand img{
+    width:105px !important;
+  }
+
+  .nav-left a{
+    display:none !important;
+  }
+
+  .nav-right a:first-child{
+    display:none !important;
+  }
+
+  .nav-right a:nth-child(2){
+    display:none !important;
+  }
+
+  .nav-project,
+  .nav.scrolled .nav-project{
+    min-width:110px !important;
+    width:110px !important;
+    height:36px !important;
+    padding:0 10px !important;
+
+    font-size:8px !important;
+    letter-spacing:1px !important;
+  }
+
+  }
