@@ -2206,3 +2206,217 @@ html, body {
   }
 
   }
+
+
+/* =========================================================
+   LOUD ADS — NEW HERO
+========================================================= */
+
+.hero{
+  min-height:100svh;
+  padding:150px 6% 70px;
+  position:relative;
+  overflow:hidden;
+  justify-content:center;
+}
+
+
+/* BIG LOGO */
+
+.hero-logo{
+  display:block;
+  width:min(420px,72vw);
+  margin:0 auto 42px;
+  position:relative;
+  z-index:2;
+}
+
+.hero-logo img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  transition:transform .4s ease;
+}
+
+.hero-logo:hover img{
+  transform:scale(1.03);
+}
+
+
+/* BRAND LABEL */
+
+.hero-kicker{
+  margin:0 0 20px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:4px;
+  color:#dc143c;
+}
+
+
+/* MAIN HEADLINE */
+
+.hero-title{
+  max-width:1050px;
+  margin:0 auto;
+  font-size:clamp(3.2rem,8vw,7.5rem);
+  line-height:.92;
+  letter-spacing:-.065em;
+  font-weight:800;
+}
+
+.hero-title span{
+  color:#dc143c;
+}
+
+
+/* DESCRIPTION */
+
+.hero-sub{
+  max-width:650px;
+  margin:30px auto 0;
+  font-size:clamp(1rem,1.5vw,1.2rem);
+  line-height:1.7;
+  color:#444;
+}
+
+
+/* BUTTON AREA */
+
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  margin-top:38px;
+  flex-wrap:wrap;
+}
+
+
+/* MAIN CTA */
+
+.hero-main-btn{
+  border:0;
+  background:#dc143c;
+  color:white;
+  padding:17px 28px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.hero-main-btn span{
+  display:inline-block;
+  margin-left:10px;
+  transition:transform .3s ease;
+}
+
+.hero-main-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 35px rgba(220,20,60,.22);
+}
+
+.hero-main-btn:hover span{
+  transform:translate(4px,-4px);
+}
+
+
+/* SECONDARY CTA */
+
+.hero-secondary-btn{
+  color:#111;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  padding:15px 5px;
+  border-bottom:1px solid #111;
+  transition:.3s ease;
+}
+
+.hero-secondary-btn:hover{
+  color:#dc143c;
+  border-color:#dc143c;
+}
+
+
+/* SERVICE STRIP */
+
+.hero-proof{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  margin-top:65px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  opacity:.5;
+}
+
+.hero-proof i{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#dc143c;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .hero{
+    min-height:100svh;
+    padding:145px 20px 60px;
+  }
+
+  .hero-logo{
+    width:min(300px,78vw);
+    margin-bottom:35px;
+  }
+
+  .hero-kicker{
+    font-size:8px;
+    letter-spacing:2px;
+  }
+
+  .hero-title{
+    font-size:clamp(3rem,14vw,4.5rem);
+    line-height:.94;
+  }
+
+  .hero-sub{
+    font-size:15px;
+    line-height:1.65;
+    margin-top:24px;
+  }
+
+  .hero-actions{
+    width:100%;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .hero-actions a{
+    width:100%;
+    max-width:320px;
+  }
+
+  .hero-main-btn{
+    width:100%;
+  }
+
+  .hero-secondary-btn{
+    display:inline-block;
+  }
+
+  .hero-proof{
+    gap:9px;
+    margin-top:45px;
+    font-size:7px;
+    letter-spacing:1px;
+  }
+
+    }
