@@ -54,6 +54,9 @@ section{
   position:relative;
 }
 
+:root{
+  --loud-red:#b00020;
+}
 
 /* =========================================================
    2. CUSTOM CURSOR
@@ -270,15 +273,7 @@ section{
   gap:28px;
 }
 
-.nav-menu-left{
-  grid-column:1;
-  justify-content:flex-start;
-}
 
-.nav-menu-right{
-  grid-column:3;
-  justify-content:flex-end;
-}
 
 
 /* NAV LINKS */
@@ -3226,4 +3221,165 @@ canvas{
 /* =========================================================
    LOUD ADS — END OF MASTER STYLESHEET
 ========================================================= */
+
+
+
+
+/* =========================================================
+   LOUD ADS — ORIGINAL CURVED IMAGE STYLE
+========================================================= */
+
+.work-item,
+.work-item img,
+.featured img,
+.ad-image-wrap,
+.review-card,
+.business-ad{
+  border-radius:12px;
+}
+
+.work-item{
+  overflow:hidden;
+}
+
+.ad-image-wrap{
+  overflow:hidden;
+}
+
+.review-card{
+  border-radius:14px;
+}
+
+   /* =========================================================
+   PORTFOLIO BUTTON SPACING
+========================================================= */
+
+.portfolio .visit-btn,
+.featured .visit-btn{
+  margin-top:35px;
+}
+
+.featured-info{
+  padding-top:15px;
+}
+
+.featured-info .visit-btn{
+  margin-top:30px;
+   }
+
+   
   
+/* =========================================================
+   LOUD ADS — PROFESSIONAL MOBILE NAV
+========================================================= */
+
+@media(max-width:700px){
+
+  .nav,
+  .nav.scrolled{
+    width:100%;
+    height:auto;
+
+    min-height:105px;
+
+    padding:10px 12px 12px;
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    grid-template-rows:auto auto;
+
+    gap:8px;
+
+    background:rgba(255,255,255,.94);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+  }
+
+
+  /* LOGO */
+
+  .nav-brand{
+    grid-column:1;
+
+    grid-row:1;
+
+    width:100%;
+
+    justify-content:center;
+  }
+
+  .nav-brand img,
+  .nav.scrolled .nav-brand img{
+    width:105px;
+  }
+
+
+  /* NAV LINKS */
+
+  .nav-menu{
+    grid-column:1;
+
+    grid-row:2;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:8px 14px;
+  }
+
+  .nav-menu-left,
+  .nav-menu-right{
+    grid-column:1;
+
+    justify-content:center;
+  }
+
+  .nav-menu a{
+    display:inline-flex !important;
+
+    font-size:8px !important;
+
+    letter-spacing:1px !important;
+  }
+
+
+  /* KEEP ONLY ONE SET OF LINKS */
+
+  .nav-menu-left{
+    display:flex;
+
+    order:1;
+  }
+
+  .nav-menu-right{
+    display:flex;
+
+    order:2;
+  }
+
+
+  /* START PROJECT */
+
+  .nav-project{
+    width:100px !important;
+
+    min-width:100px !important;
+
+    height:32px !important;
+
+    font-size:8px !important;
+
+    letter-spacing:.9px !important;
+  }
+
+}
