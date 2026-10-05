@@ -110,10 +110,33 @@ const mobileMenu = $("#mobileMenu");
 
 if(menuToggle && mobileMenu){
 
+   /* CLOSE MOBILE MENU ON DESKTOP */
+
+window.addEventListener("resize", () => {
+
+  if(window.innerWidth > 900 && mobileMenu.classList.contains("open")){
+
+    mobileMenu.classList.remove("open");
+
+    document.body.style.overflow =
+      "";
+
+    menuToggle.setAttribute(
+      "aria-label",
+      "Open menu"
+    );
+
+  }
+
+});
+
   menuToggle.addEventListener("click", () => {
 
     const open =
-      mobileMenu.classList.toggle("open");
+  mobileMenu.classList.toggle("open");
+
+document.body.style.overflow =
+  open ? "hidden" : "";
 
     menuToggle.setAttribute(
       "aria-label",
@@ -128,9 +151,12 @@ if(menuToggle && mobileMenu){
 
       mobileMenu.classList.remove("open");
 
-      menuToggle.setAttribute(
-        "aria-label",
-        "Open menu"
+document.body.style.overflow =
+  "";
+
+menuToggle.setAttribute(
+  "aria-label",
+  "Open menu"
       );
 
     });
@@ -138,6 +164,23 @@ if(menuToggle && mobileMenu){
   });
 
      }
+
+  /* CLOSE MENU WITH ESCAPE */
+
+  document.addEventListener("keydown", event => {
+
+    if(event.key === "Escape" && mobileMenu.classList.contains("open")){
+
+      mobileMenu.classList.remove("open");
+
+      menuToggle.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+
+    }
+
+  });
 
 
 /* =========================================================
