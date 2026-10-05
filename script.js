@@ -102,6 +102,45 @@ updateNav();
 
 
 /* =========================================================
+04A. MOBILE MENU
+========================================================= */
+
+const menuToggle = $("#menuToggle");
+const mobileMenu = $("#mobileMenu");
+
+if(menuToggle && mobileMenu){
+
+  menuToggle.addEventListener("click", () => {
+
+    const open =
+      mobileMenu.classList.toggle("open");
+
+    menuToggle.setAttribute(
+      "aria-label",
+      open ? "Close menu" : "Open menu"
+    );
+
+  });
+
+  $$(".mobile-menu a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      mobileMenu.classList.remove("open");
+
+      menuToggle.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+
+    });
+
+  });
+
+     }
+
+
+/* =========================================================
 05. CUSTOM CURSOR
 ========================================================= */
 
