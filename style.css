@@ -309,7 +309,7 @@ body {
   border: 0;
   padding: 16px 24px;
   color: var(--white);
-  background: var(--black);
+  background: var(--red);
   cursor: pointer;
   font-weight: 800;
   text-transform: uppercase;
@@ -320,8 +320,9 @@ body {
 }
 
 .hero-actions a:first-child button:hover {
-  background: var(--red);
-  transform: translateY(-3px);
+  background: #b01030;
+  color: var(--white);
+  transform: translateY(-4px);
 }
 
 .hero-text-link {
@@ -431,7 +432,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
-  background: var(--black);
+  background: var(--red);
 }
 
 .need-card {
@@ -508,8 +509,10 @@ body {
 .result-content {
   position: relative;
   padding: 55px;
-  background: var(--black);
-  color: var(--white);
+  background: rgba(255,255,255,.82);
+  color: var(--black);
+  border: 1px solid var(--red);
+  box-shadow: inset 4px 0 0 var(--red);
 }
 
 .result-close {
@@ -517,7 +520,7 @@ body {
   top: 20px;
   right: 25px;
   border: 0;
-  color: var(--white);
+  color: var(--red);
   background: transparent;
   font-size: 28px;
   cursor: pointer;
@@ -660,7 +663,7 @@ transform: translateY(10px);
   margin: 80px auto 0;
   padding: 16px 22px;
   color: var(--white);
-  background: var(--black);
+  background: var(--red);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: .1em;
@@ -671,8 +674,9 @@ transform: translateY(10px);
 }
 
 .portfolio-cta:hover {
-  background: var(--red);
-  transform: translateY(-3px);
+  background: #b01030;
+  color: var(--white);
+  transform: translateY(-4px);
 }
 
 /* =========================================================
