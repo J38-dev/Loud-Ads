@@ -80,6 +80,8 @@ body {
    GENERAL SECTIONS
    ========================================================= */
 
+/* KEEP THE GRID VISIBLE THROUGH EVERY SECTION */
+
 .hero,
 .need-section,
 .work-showcase,
@@ -90,10 +92,8 @@ body {
 .process,
 .contact,
 .footer {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
+  background: transparent;
+   }
 
 .section-label {
   margin: 0 0 18px;
@@ -442,8 +442,9 @@ body {
 }
 
 .need-card:hover {
-  color: var(--white);
-  background: var(--black);
+  color: var(--black);
+  background: rgba(220,20,60,.06);
+  box-shadow: inset 4px 0 0 var(--red);
 }
 
 .need-number {
@@ -469,7 +470,7 @@ body {
 }
 
 .need-card:hover p {
-  color: #bdbdbd;
+  color: var(--muted);
 }
 
 .need-arrow {
@@ -586,7 +587,8 @@ body {
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.025);
+  transform: scale(1.035);
+  filter: saturate(1.08);
 }
 
 .project-hover {
@@ -600,7 +602,7 @@ body {
   font-weight: 800;
   letter-spacing: .1em;
   opacity: 0;
-  transform: translateY(15px);
+transform: translateY(10px);
   transition:
     opacity var(--normal) var(--ease),
     transform var(--normal) var(--ease);
@@ -705,8 +707,9 @@ body {
 
 .creative-tab.active,
 .creative-tab:hover {
-  color: var(--white);
-  background: var(--black);
+  color: var(--red);
+  background: rgba(220,20,60,.06);
+  border-color: var(--red);
 }
 
 .creative-panel {
@@ -858,9 +861,9 @@ body {
 
 .reviews {
   padding: 150px 0 120px;
-  background: var(--black);
-  color: var(--white);
-}
+  background: transparent;
+  color: var(--black);
+   }
 
 .reviews-heading {
   max-width: 1400px;
@@ -894,16 +897,13 @@ body {
   flex: 0 0 360px;
   min-height: 245px;
   padding: 30px;
-  border: 1px solid #333;
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.72);
 }
 
 .review-card p {
   margin: 0;
-  color: #ddd;
+  color: var(--black);
   font-size: 15px;
   line-height: 1.7;
 }
@@ -915,7 +915,7 @@ body {
 }
 
 .review-card span {
-  color: #888;
+  color: var(--muted);
   font-size: 11px;
   font-weight: 700;
 }
@@ -1107,7 +1107,7 @@ body {
 }
 
 .contact > a:hover {
-  background: var(--black);
+  background: #b01030;
   transform: translateY(-4px);
 }
 
